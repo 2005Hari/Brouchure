@@ -1,0 +1,2308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>H&A Studio — Web & Software Development</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    :root {
+      --black: #050505;
+      --ink: #0d0d0d;
+      --ink2: #141414;
+      --ink3: #1c1c1c;
+      --ink4: #242424;
+      --b1: #2a2a2a;
+      --b2: #383838;
+      --b3: #484848;
+      --muted: #5a5a5a;
+      --soft: #888;
+      --body: #b0b0b0;
+      --light: #d0d0d0;
+      --offwhite: #e8e8e8;
+      --white: #f2f2f2;
+      --pure: #ffffff;
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--black);
+      color: var(--body);
+      line-height: 1.6;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit
+    }
+
+    img {
+      display: block;
+      max-width: 100%
+    }
+
+    .wrap {
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 0 40px
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      padding: 0;
+      position: sticky;
+      top: 0;
+      background: rgba(5, 5, 5, 0.96);
+      backdrop-filter: blur(20px);
+      z-index: 200;
+      border-bottom: 1px solid var(--b1)
+    }
+
+    .nav-in {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 0 40px;
+      height: 64px
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: 21px;
+      color: var(--pure);
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 3px
+    }
+
+    .logo-amp {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      color: var(--muted);
+      font-weight: 400
+    }
+
+    .logo-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-left: 10px;
+      padding-left: 10px;
+      border-left: 1px solid var(--b1);
+      line-height: 1
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center
+    }
+
+    .nav-links a {
+      font-size: 12px;
+      color: var(--muted);
+      transition: color 0.2s;
+      letter-spacing: 0.5px;
+      font-weight: 500
+    }
+
+    .nav-links a:hover {
+      color: var(--white)
+    }
+
+    .nav-cta {
+      background: var(--pure);
+      color: var(--black);
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      padding: 9px 22px;
+      border-radius: 4px;
+      letter-spacing: 0.5px;
+      transition: background 0.2s, transform 0.15s
+    }
+
+    .nav-cta:hover {
+      background: var(--offwhite);
+      transform: translateY(-1px)
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 0 60px;
+      border-bottom: 1px solid var(--b1);
+      position: relative;
+      overflow: hidden
+    }
+
+    .hero-grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(var(--b1) 1px, transparent 1px), linear-gradient(90deg, var(--b1) 1px, transparent 1px);
+      background-size: 60px 60px;
+      opacity: 0.18;
+      pointer-events: none
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1
+    }
+
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 40px
+    }
+
+    .hero-eyebrow-line {
+      width: 40px;
+      height: 1px;
+      background: var(--b3)
+    }
+
+    .hero-eyebrow span {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 4px;
+      color: var(--muted);
+      text-transform: uppercase
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(52px, 7.5vw, 96px);
+      font-weight: 900;
+      color: var(--pure);
+      letter-spacing: -3px;
+      line-height: 0.95;
+      margin-bottom: 14px
+    }
+
+    .hero h1 .italic {
+      font-style: italic;
+      color: var(--soft)
+    }
+
+    .hero-tagline {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(14px, 1.8vw, 17px);
+      color: var(--muted);
+      max-width: 520px;
+      line-height: 1.7;
+      margin: 32px 0 56px;
+      font-weight: 300;
+      letter-spacing: 0.2px
+    }
+
+    .hero-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 14px;
+      align-items: center
+    }
+
+    .btn-prim {
+      background: var(--pure);
+      color: var(--black);
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      padding: 13px 28px;
+      border-radius: 4px;
+      letter-spacing: 0.3px;
+      transition: all 0.2s;
+      display: inline-block
+    }
+
+    .btn-prim:hover {
+      background: var(--offwhite);
+      transform: translateY(-1px)
+    }
+
+    .btn-ghost {
+      color: var(--soft);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      padding: 12px 24px;
+      border: 1px solid var(--b2);
+      border-radius: 4px;
+      transition: all 0.2s;
+      display: inline-block;
+      letter-spacing: 0.3px
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--b3);
+      color: var(--white)
+    }
+
+    .hero-stats-row {
+      display: flex;
+      gap: 40px
+    }
+
+    .hstat {
+      text-align: right
+    }
+
+    .hstat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1
+    }
+
+    .hstat-label {
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: 4px
+    }
+
+    /* ─── SECTION SKELETON ─── */
+    section {
+      padding: 96px 0;
+      border-bottom: 1px solid var(--b1)
+    }
+
+    .sec-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px
+    }
+
+    .sec-eyebrow-line {
+      width: 28px;
+      height: 1px;
+      background: var(--b3)
+    }
+
+    .sec-eyebrow span {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 4px;
+      color: var(--muted);
+      text-transform: uppercase
+    }
+
+    .sec-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 3.8vw, 48px);
+      font-weight: 900;
+      color: var(--pure);
+      letter-spacing: -2px;
+      line-height: 1.05;
+      margin-bottom: 16px
+    }
+
+    .sec-desc {
+      font-size: 15px;
+      color: var(--muted);
+      max-width: 500px;
+      line-height: 1.7;
+      font-weight: 300
+    }
+
+    .sec-head {
+      margin-bottom: 64px
+    }
+
+    .sec-head.ctr {
+      text-align: center
+    }
+
+    .sec-head.ctr .sec-eyebrow {
+      justify-content: center
+    }
+
+    .sec-head.ctr .sec-desc {
+      margin: 0 auto
+    }
+
+    /* ─── DIVIDER ─── */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: var(--b1);
+      margin: 0
+    }
+
+    /* ─── SERVICE FEATURE CARDS (Core) ─── */
+    .core-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--b1);
+      border: 1px solid var(--b1);
+      border-radius: 2px
+    }
+
+    .core-card {
+      background: var(--ink);
+      padding: 36px 30px;
+      display: flex;
+      flex-direction: column;
+      transition: background 0.25s;
+      position: relative;
+      overflow: hidden
+    }
+
+    .core-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--b1);
+      transition: background 0.3s
+    }
+
+    .core-card:hover {
+      background: var(--ink2)
+    }
+
+    .core-card:hover::after {
+      background: var(--b3)
+    }
+
+    .core-card.star {
+      background: var(--ink2)
+    }
+
+    .core-card.star::after {
+      background: var(--pure)
+    }
+
+    .star-pill {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: var(--pure);
+      color: var(--black);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      padding: 4px 10px;
+      text-transform: uppercase
+    }
+
+    .cc-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 11px;
+      color: var(--b3);
+      margin-bottom: 24px;
+      letter-spacing: 2px
+    }
+
+    .cc-icon {
+      font-size: 28px;
+      margin-bottom: 16px
+    }
+
+    .core-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--pure);
+      margin-bottom: 10px;
+      letter-spacing: -0.3px;
+      line-height: 1.3
+    }
+
+    .core-card p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 20px;
+      flex: 1;
+      font-weight: 300
+    }
+
+    .cc-features {
+      list-style: none;
+      margin-bottom: 28px
+    }
+
+    .cc-features li {
+      font-size: 12px;
+      color: var(--soft);
+      padding: 5px 0;
+      border-bottom: 1px solid var(--b1);
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      line-height: 1.4
+    }
+
+    .cc-features li:last-child {
+      border: none
+    }
+
+    .cc-check {
+      color: var(--b3);
+      flex-shrink: 0;
+      font-size: 11px;
+      margin-top: 2px
+    }
+
+    .core-card:hover .cc-check {
+      color: var(--soft)
+    }
+
+    .cc-price-row {
+      margin-top: auto;
+      padding-top: 20px;
+      border-top: 1px solid var(--b1);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end
+    }
+
+    .cc-price {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.5px
+    }
+
+    .cc-time {
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-align: right;
+      line-height: 1.4
+    }
+
+    /* ─── SOFTWARE SECTION ─── */
+    .software-hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start
+    }
+
+    .software-left h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 900;
+      color: var(--pure);
+      letter-spacing: -2px;
+      line-height: 1.05;
+      margin-bottom: 20px
+    }
+
+    .software-left p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.75;
+      font-weight: 300;
+      margin-bottom: 32px
+    }
+
+    .software-right {
+      display: flex;
+      flex-direction: column;
+      gap: 2px
+    }
+
+    .sw-item {
+      padding: 22px 24px;
+      background: var(--ink2);
+      border: 1px solid var(--b1);
+      transition: background 0.2s, border-color 0.2s;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 20px
+    }
+
+    .sw-item:hover {
+      background: var(--ink3);
+      border-color: var(--b2)
+    }
+
+    .sw-item-left {}
+
+    .sw-item h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 4px
+    }
+
+    .sw-item p {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.5
+    }
+
+    .sw-price-tag {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--soft);
+      white-space: nowrap;
+      text-align: right
+    }
+
+    .sw-price-time {
+      font-size: 10px;
+      color: var(--muted);
+      text-align: right;
+      letter-spacing: 0.5px;
+      margin-top: 2px
+    }
+
+    /* ─── CATALOG GRID ─── */
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1px;
+      background: var(--b1);
+      border: 1px solid var(--b1)
+    }
+
+    .cat-item {
+      background: var(--ink);
+      padding: 22px 20px;
+      transition: background 0.2s;
+      position: relative
+    }
+
+    .cat-item:hover {
+      background: var(--ink2)
+    }
+
+    .cat-item-icon {
+      font-size: 20px;
+      margin-bottom: 10px
+    }
+
+    .cat-item h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--light);
+      margin-bottom: 5px
+    }
+
+    .cat-item p {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-bottom: 12px
+    }
+
+    .cat-item-price {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--soft)
+    }
+
+    /* ─── PRICING TABLE ─── */
+    .pt-wrap {
+      border: 1px solid var(--b1)
+    }
+
+    .pt-head {
+      display: grid;
+      grid-template-columns: 2.4fr 1.4fr 0.9fr 0.8fr;
+      padding: 12px 28px;
+      background: var(--ink3);
+      border-bottom: 1px solid var(--b1)
+    }
+
+    .pt-head span {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted)
+    }
+
+    .pt-row {
+      display: grid;
+      grid-template-columns: 2.4fr 1.4fr 0.9fr 0.8fr;
+      padding: 16px 28px;
+      border-bottom: 1px solid var(--b1);
+      align-items: center;
+      transition: background 0.15s
+    }
+
+    .pt-row:last-child {
+      border-bottom: none
+    }
+
+    .pt-row:hover {
+      background: var(--ink2)
+    }
+
+    .pt-row.cat-sep {
+      background: var(--ink3);
+      padding: 8px 28px
+    }
+
+    .pt-cat-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+      grid-column: 1/-1
+    }
+
+    .pt-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--light)
+    }
+
+    .pt-desc {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 2px
+    }
+
+    .pt-price {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--white)
+    }
+
+    .pt-time {
+      font-size: 11px;
+      color: var(--muted);
+      text-align: center
+    }
+
+    .pt-type {
+      font-size: 10px;
+      color: var(--muted);
+      text-align: right;
+      letter-spacing: 0.5px
+    }
+
+    /* ─── PACKAGES ─── */
+    .pkg-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--b1);
+      border: 1px solid var(--b1)
+    }
+
+    .pkg {
+      background: var(--ink);
+      padding: 36px 28px;
+      transition: background 0.2s
+    }
+
+    .pkg:hover {
+      background: var(--ink2)
+    }
+
+    .pkg.best {
+      background: var(--ink2)
+    }
+
+    .pkg-tier {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px
+    }
+
+    .pkg h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 900;
+      color: var(--pure);
+      margin-bottom: 8px;
+      letter-spacing: -1px
+    }
+
+    .pkg-desc {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--b1);
+      line-height: 1.6;
+      font-weight: 300
+    }
+
+    .pkg-price {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--pure);
+      letter-spacing: -1px;
+      margin-bottom: 4px
+    }
+
+    .pkg-price-note {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 28px
+    }
+
+    .pkg-list {
+      list-style: none;
+      margin-bottom: 32px
+    }
+
+    .pkg-list li {
+      font-size: 12px;
+      color: var(--body);
+      padding: 7px 0;
+      border-bottom: 1px solid var(--b1);
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      line-height: 1.45
+    }
+
+    .pkg-list li:last-child {
+      border: none
+    }
+
+    .pl-y {
+      color: var(--soft);
+      flex-shrink: 0;
+      font-size: 11px;
+      margin-top: 1px
+    }
+
+    .pl-n {
+      color: var(--b3);
+      flex-shrink: 0;
+      font-size: 11px;
+      margin-top: 1px
+    }
+
+    .pkg-cta {
+      display: block;
+      text-align: center;
+      padding: 12px;
+      border: 1px solid var(--b2);
+      color: var(--soft);
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+      transition: all 0.2s;
+      border-radius: 2px
+    }
+
+    .pkg.best .pkg-cta {
+      background: var(--pure);
+      color: var(--black);
+      border-color: var(--pure)
+    }
+
+    .pkg-cta:hover {
+      border-color: var(--b3);
+      color: var(--light)
+    }
+
+    /* ─── PROCESS ─── */
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      background: var(--b1);
+      gap: 1px;
+      border: 1px solid var(--b1)
+    }
+
+    .pstep {
+      background: var(--ink);
+      padding: 32px 24px
+    }
+
+    .ps-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      font-weight: 900;
+      color: var(--ink4);
+      line-height: 1;
+      margin-bottom: 20px;
+      letter-spacing: -2px
+    }
+
+    .pstep h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+      letter-spacing: -0.2px
+    }
+
+    .pstep p {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.65;
+      font-weight: 300
+    }
+
+    /* ─── TECH ─── */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1px;
+      background: var(--b1);
+      border: 1px solid var(--b1)
+    }
+
+    .tc-group {
+      background: var(--ink);
+      padding: 20px 18px
+    }
+
+    .tc-group-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px
+    }
+
+    .tc-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px
+    }
+
+    .tc-chip {
+      background: var(--ink3);
+      border: 1px solid var(--b1);
+      font-size: 11px;
+      color: var(--soft);
+      padding: 4px 10px;
+      border-radius: 2px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 500;
+      transition: border-color 0.2s
+    }
+
+    .tc-chip:hover {
+      border-color: var(--b2)
+    }
+
+    /* ─── WHY US ─── */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--b1);
+      border: 1px solid var(--b1)
+    }
+
+    .why-item {
+      background: var(--ink);
+      padding: 28px 24px;
+      transition: background 0.2s
+    }
+
+    .why-item:hover {
+      background: var(--ink2)
+    }
+
+    .why-icon {
+      font-size: 24px;
+      margin-bottom: 14px
+    }
+
+    .why-item h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px
+    }
+
+    .why-item p {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.65;
+      font-weight: 300
+    }
+
+    /* ─── TEAM ─── */
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--b1);
+      border: 1px solid var(--b1)
+    }
+
+    .team-card {
+      background: var(--ink2);
+      padding: 48px 40px;
+      display: flex;
+      gap: 32px;
+      align-items: flex-start
+    }
+
+    .team-avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 2px;
+      background: var(--ink4);
+      border: 1px solid var(--b2);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--b3)
+    }
+
+    .team-info {}
+
+    .team-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--pure);
+      letter-spacing: -0.5px;
+      margin-bottom: 4px
+    }
+
+    .team-role {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 20px
+    }
+
+    .team-contacts {
+      display: flex;
+      flex-direction: column;
+      gap: 9px
+    }
+
+    .tc-line {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--soft)
+    }
+
+    .tc-icon {
+      font-size: 13px;
+      color: var(--b3);
+      flex-shrink: 0
+    }
+
+    .tc-val {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 500;
+      color: var(--soft);
+      transition: color 0.2s
+    }
+
+    .tc-val:hover {
+      color: var(--white)
+    }
+
+    a.tc-val {
+      text-decoration: none
+    }
+
+    /* ─── CTA BAND ─── */
+    .cta-section {
+      background: var(--pure);
+      padding: 100px 40px;
+      text-align: center
+    }
+
+    .cta-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(34px, 5vw, 64px);
+      font-weight: 900;
+      color: var(--black);
+      letter-spacing: -3px;
+      line-height: 0.95;
+      margin-bottom: 20px
+    }
+
+    .cta-section h2 em {
+      font-style: italic;
+      color: #555
+    }
+
+    .cta-section p {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 48px;
+      font-weight: 300
+    }
+
+    .cta-btns {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap
+    }
+
+    .cta-dark {
+      background: var(--black);
+      color: var(--pure);
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      padding: 14px 32px;
+      border-radius: 4px;
+      letter-spacing: 0.3px;
+      transition: all 0.2s;
+      display: inline-block
+    }
+
+    .cta-dark:hover {
+      background: #1a1a1a;
+      transform: translateY(-1px)
+    }
+
+    .cta-outline {
+      background: transparent;
+      color: var(--black);
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      padding: 13px 28px;
+      border-radius: 4px;
+      border: 1.5px solid #ccc;
+      letter-spacing: 0.3px;
+      transition: all 0.2s;
+      display: inline-block
+    }
+
+    .cta-outline:hover {
+      border-color: #888
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      padding: 40px 0
+    }
+
+    .footer-in {
+      display: flex;
+      align-items: center;
+      justify-content: space-between
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: 18px;
+      color: var(--b2)
+    }
+
+    .footer-copy {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.5px
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px
+    }
+
+    .footer-links a {
+      font-size: 11px;
+      color: var(--muted);
+      transition: color 0.2s;
+      letter-spacing: 0.5px
+    }
+
+    .footer-links a:hover {
+      color: var(--soft)
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media(max-width:900px) {
+      .hero h1 {
+        letter-spacing: -2px
+      }
+
+      .core-grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .software-hero {
+        grid-template-columns: 1fr;
+        gap: 48px
+      }
+
+      .pkg-grid {
+        grid-template-columns: 1fr
+      }
+
+      .process-grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .why-grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .team-grid {
+        grid-template-columns: 1fr
+      }
+
+      .pt-head,
+      .pt-row {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .pt-time,
+      .pt-type,
+      .pt-head span:nth-child(n+3) {
+        display: none
+      }
+
+      .footer-in {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center
+      }
+    }
+
+    @media(max-width:600px) {
+      .wrap {
+        padding: 0 20px
+      }
+
+      .nav-in {
+        padding: 0 20px
+      }
+
+      .nav-links,
+      .logo-sub {
+        display: none
+      }
+
+      .core-grid {
+        grid-template-columns: 1fr
+      }
+
+      .process-grid {
+        grid-template-columns: 1fr
+      }
+
+      .why-grid {
+        grid-template-columns: 1fr
+      }
+
+      .hero-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 32px
+      }
+
+      .hero-stats-row {
+        gap: 24px
+      }
+
+      .team-card {
+        flex-direction: column;
+        padding: 32px 24px;
+        gap: 20px
+      }
+
+      .cta-section {
+        padding: 60px 20px
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <div class="nav-in">
+      <div class="logo">
+        H<span class="logo-amp">&amp;</span>A
+        <span class="logo-sub">Studio</span>
+      </div>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#software">Software</a>
+        <a href="#catalog">All Websites</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#team">Team</a>
+      </div>
+      <a href="#cta" class="nav-cta">Start a Project →</a>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section style="border:none;padding:0">
+    <div class="hero">
+      <div class="hero-grid-bg"></div>
+      <div class="wrap hero-content">
+        <div class="hero-eyebrow">
+          <div class="hero-eyebrow-line"></div>
+          <span>Web &amp; Software Development Studio · Dhule, Maharashtra</span>
+        </div>
+        <h1>We craft<br /><span class="italic">digital</span><br />products.</h1>
+        <p class="hero-tagline">From a single landing page to enterprise software systems — every project is
+          custom-built, mobile-first, and engineered to perform. No templates. No shortcuts.</p>
+        <div class="hero-bottom">
+          <div class="hero-ctas">
+            <a href="#cta" class="btn-prim">Start a Project</a>
+            <a href="#pricing" class="btn-ghost">View Pricing</a>
+          </div>
+          <div class="hero-stats-row">
+            <div class="hstat">
+              <div class="hstat-num">50+</div>
+              <div class="hstat-label">Projects Delivered</div>
+            </div>
+            <div class="hstat">
+              <div class="hstat-num">7 days</div>
+              <div class="hstat-label">Fastest Launch</div>
+            </div>
+            <div class="hstat">
+              <div class="hstat-num">₹8K</div>
+              <div class="hstat-label">Starting Price</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WEB SERVICES ── -->
+  <section id="services">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-eyebrow">
+          <div class="sec-eyebrow-line"></div><span>Web Development</span>
+        </div>
+        <h2 class="sec-title">Our core web services</h2>
+        <p class="sec-desc">Every build is scoped, designed, and shipped — with full ownership handed to you at launch.
+        </p>
+      </div>
+      <div class="core-grid">
+
+        <div class="core-card">
+          <div class="cc-num">01 / 06</div>
+          <div class="cc-icon">🚀</div>
+          <h3>Landing Page</h3>
+          <p>High-converting single-page sites for startups, products, campaigns, and personal brands. Built to capture
+            leads and load fast.</p>
+          <ul class="cc-features">
+            <li><span class="cc-check">→</span>Custom design — no templates used</li>
+            <li><span class="cc-check">→</span>Lead capture &amp; contact forms</li>
+            <li><span class="cc-check">→</span>Google Analytics &amp; SEO setup</li>
+            <li><span class="cc-check">→</span>Mobile-first &amp; fast load</li>
+          </ul>
+          <div class="cc-price-row">
+            <div class="cc-price">₹8,000 – ₹15,000</div>
+            <div class="cc-time">7–12 days</div>
+          </div>
+        </div>
+
+        <div class="core-card star">
+          <div class="star-pill">★ Most Popular</div>
+          <div class="cc-num">02 / 06</div>
+          <div class="cc-icon">🍽️</div>
+          <h3>Restaurant &amp; Cafe Website</h3>
+          <p>Full digital presence — online menu, live ordering, real-time admin panel, UPI/Razorpay payments, and
+            WhatsApp order notifications.</p>
+          <ul class="cc-features">
+            <li><span class="cc-check">→</span>Online ordering &amp; payment integration</li>
+            <li><span class="cc-check">→</span>Real-time admin order dashboard</li>
+            <li><span class="cc-check">→</span>WhatsApp &amp; SMS order alerts</li>
+            <li><span class="cc-check">→</span>Table reservation system</li>
+            <li><span class="cc-check">→</span>Menu management panel</li>
+          </ul>
+          <div class="cc-price-row">
+            <div class="cc-price">₹25,000 – ₹45,000</div>
+            <div class="cc-time">3–5 weeks</div>
+          </div>
+        </div>
+
+        <div class="core-card">
+          <div class="cc-num">03 / 06</div>
+          <div class="cc-icon">🛒</div>
+          <h3>E-Commerce Store</h3>
+          <p>Complete online store with product catalog, smart cart, checkout, inventory management, and automatic GST
+            invoice generation.</p>
+          <ul class="cc-features">
+            <li><span class="cc-check">→</span>Product catalog with filters</li>
+            <li><span class="cc-check">→</span>UPI, card &amp; COD payments</li>
+            <li><span class="cc-check">→</span>GST invoice auto-generation</li>
+            <li><span class="cc-check">→</span>Inventory &amp; order management</li>
+          </ul>
+          <div class="cc-price-row">
+            <div class="cc-price">₹28,000 – ₹55,000</div>
+            <div class="cc-time">4–6 weeks</div>
+          </div>
+        </div>
+
+        <div class="core-card">
+          <div class="cc-num">04 / 06</div>
+          <div class="cc-icon">💼</div>
+          <h3>Business Portfolio</h3>
+          <p>Multi-page professional presence for agencies, consultants, clinics, and service businesses. Includes blog,
+            team pages, and inquiry forms.</p>
+          <ul class="cc-features">
+            <li><span class="cc-check">→</span>Multi-page custom design</li>
+            <li><span class="cc-check">→</span>Blog &amp; news section (optional)</li>
+            <li><span class="cc-check">→</span>Google Maps &amp; contact forms</li>
+            <li><span class="cc-check">→</span>Google Business integration</li>
+          </ul>
+          <div class="cc-price-row">
+            <div class="cc-price">₹12,000 – ₹22,000</div>
+            <div class="cc-time">10–18 days</div>
+          </div>
+        </div>
+
+        <div class="core-card">
+          <div class="cc-num">05 / 06</div>
+          <div class="cc-icon">⚙️</div>
+          <h3>Custom Web Application</h3>
+          <p>Portals, SaaS tools, booking systems, internal management dashboards — scoped and built to your exact
+            technical requirements.</p>
+          <ul class="cc-features">
+            <li><span class="cc-check">→</span>React / Next.js frontend</li>
+            <li><span class="cc-check">→</span>Node.js / Python backend</li>
+            <li><span class="cc-check">→</span>User auth &amp; role management</li>
+            <li><span class="cc-check">→</span>Cloud deployment included</li>
+          </ul>
+          <div class="cc-price-row">
+            <div class="cc-price">₹45,000+</div>
+            <div class="cc-time">6–12 weeks</div>
+          </div>
+        </div>
+
+        <div class="core-card">
+          <div class="cc-num">06 / 06</div>
+          <div class="cc-icon">🔧</div>
+          <h3>SEO &amp; Maintenance</h3>
+          <p>Monthly care for your existing website — updates, speed optimisation, security patches, Core Web Vitals,
+            and performance reports.</p>
+          <ul class="cc-features">
+            <li><span class="cc-check">→</span>Monthly content updates</li>
+            <li><span class="cc-check">→</span>Speed &amp; Core Web Vitals</li>
+            <li><span class="cc-check">→</span>Security patches &amp; backups</li>
+            <li><span class="cc-check">→</span>Monthly performance reports</li>
+          </ul>
+          <div class="cc-price-row">
+            <div class="cc-price">₹2,500 / month</div>
+            <div class="cc-time">Ongoing retainer</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SOFTWARE DEVELOPMENT ── -->
+  <section id="software">
+    <div class="wrap">
+      <div class="software-hero">
+        <div class="software-left">
+          <div class="sec-eyebrow">
+            <div class="sec-eyebrow-line"></div><span>Software Development</span>
+          </div>
+          <h2>Beyond the website.</h2>
+          <p>We build full-scale software systems — desktop apps, mobile apps, management systems, APIs, and automation
+            tools. If you can describe it, we can engineer it.</p>
+          <div style="margin-top:28px;display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;gap:12px;align-items:start">
+              <span style="color:var(--b3);font-size:12px;margin-top:2px">→</span>
+              <span style="font-size:13px;color:var(--muted)">Requirement analysis &amp; architecture planning</span>
+            </div>
+            <div style="display:flex;gap:12px;align-items:start">
+              <span style="color:var(--b3);font-size:12px;margin-top:2px">→</span>
+              <span style="font-size:13px;color:var(--muted)">Agile development with regular deliverables</span>
+            </div>
+            <div style="display:flex;gap:12px;align-items:start">
+              <span style="color:var(--b3);font-size:12px;margin-top:2px">→</span>
+              <span style="font-size:13px;color:var(--muted)">Full documentation &amp; source code ownership</span>
+            </div>
+            <div style="display:flex;gap:12px;align-items:start">
+              <span style="color:var(--b3);font-size:12px;margin-top:2px">→</span>
+              <span style="font-size:13px;color:var(--muted)">Post-launch support &amp; maintenance plans</span>
+            </div>
+          </div>
+        </div>
+        <div class="software-right">
+          <div class="sw-item">
+            <div class="sw-item-left">
+              <h4>Mobile App Development</h4>
+              <p>Android &amp; iOS apps using React Native. E-commerce, delivery, booking, and custom apps.</p>
+            </div>
+            <div>
+              <div class="sw-price-tag">₹40,000+</div>
+              <div class="sw-price-time">8–16 weeks</div>
+            </div>
+          </div>
+          <div class="sw-item">
+            <div class="sw-item-left">
+              <h4>Desktop Application</h4>
+              <p>Windows / cross-platform apps for billing, inventory, POS, and internal tools using Electron or Python.
+              </p>
+            </div>
+            <div>
+              <div class="sw-price-tag">₹30,000+</div>
+              <div class="sw-price-time">6–10 weeks</div>
+            </div>
+          </div>
+          <div class="sw-item">
+            <div class="sw-item-left">
+              <h4>ERP / Business Management System</h4>
+              <p>Custom ERP for HR, payroll, inventory, accounts, and operations — tailored to your business flow.</p>
+            </div>
+            <div>
+              <div class="sw-price-tag">₹80,000+</div>
+              <div class="sw-price-time">12–20 weeks</div>
+            </div>
+          </div>
+          <div class="sw-item">
+            <div class="sw-item-left">
+              <h4>SaaS Product Development</h4>
+              <p>Multi-tenant SaaS platforms with subscriptions, billing, onboarding, and user management built in.</p>
+            </div>
+            <div>
+              <div class="sw-price-tag">₹70,000+</div>
+              <div class="sw-price-time">12–24 weeks</div>
+            </div>
+          </div>
+          <div class="sw-item">
+            <div class="sw-item-left">
+              <h4>API Development &amp; Integration</h4>
+              <p>REST / GraphQL APIs, third-party integrations, payment gateways, WhatsApp APIs, and CRM connectors.</p>
+            </div>
+            <div>
+              <div class="sw-price-tag">₹15,000+</div>
+              <div class="sw-price-time">1–4 weeks</div>
+            </div>
+          </div>
+          <div class="sw-item">
+            <div class="sw-item-left">
+              <h4>Automation &amp; Scripting</h4>
+              <p>Web scraping, report automation, data pipelines, email/WhatsApp automation, and workflow bots.</p>
+            </div>
+            <div>
+              <div class="sw-price-tag">₹8,000+</div>
+              <div class="sw-price-time">3–10 days</div>
+            </div>
+          </div>
+          <div class="sw-item">
+            <div class="sw-item-left">
+              <h4>AI-Powered Features</h4>
+              <p>Chatbots, recommendation engines, document processing, and AI integrations using OpenAI / Gemini APIs.
+              </p>
+            </div>
+            <div>
+              <div class="sw-price-tag">₹25,000+</div>
+              <div class="sw-price-time">3–8 weeks</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ALL WEBSITE TYPES ── -->
+  <section id="catalog">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-eyebrow">
+          <div class="sec-eyebrow-line"></div><span>Website Catalog</span>
+        </div>
+        <h2 class="sec-title">Every type of website we build</h2>
+        <p class="sec-desc">We've built for industries across the board. Find your sector below.</p>
+      </div>
+      <div class="catalog-grid">
+        <div class="cat-item">
+          <div class="cat-item-icon">🍽️</div>
+          <h4>Restaurant / Cafe</h4>
+          <p>Menu, orders, UPI, table booking, admin panel</p>
+          <div class="cat-item-price">₹25,000 – ₹45,000</div>
+        </div>
+        <div class="cat-item">
+          <div class="cat-item-icon">🛒</div>
+          <h4>E-Commerce Store</h4>
+          <p>Catalog, cart, payments, GST invoicing, inventory</p>
+          <div class="cat-item-price">₹28,000 – ₹55,000</div>
+        </div>
+        <div class="cat-item">
+          <div class="cat-item-icon">🏫</div>
+          <h4>School / Coaching</h4>
+          <p>Admissions, fee portal, course pages, notice board</p>
+          <div class="cat-item-price">₹15,000 – ₹30,000</div>
+        </div>
+        <div class="cat-item">
+          <div class="cat-item-icon">🏥</div>
+          <h4>Hospital / Clinic</h4>
+          <p>Appointments, doctor profiles, departments, health info</p>
+          <div class="cat-item-price">₹18,000 – ₹35,000</div>
+        </div>
+        <div class="cat-item">
+          <div class="cat-item-icon">🏡</div>
+          <h4>Real Estate</h4>
+          <p>Property listings, filters, virtual tours, enquiry</p>
+          <div class="cat-item-price">₹20,000 – ₹40,000</div>
+        </div>
+        <div class="cat-item">
+          <div class="cat-item-icon">🏨</div>
+          <h4>Hotel / Resort</h4>
+          <p>Room booking, gallery, amenities, reviews</p>
+          <div class="cat-item-price">₹22,000 – ₹40,000</div>
+        </div>
+        <div class="cat-item">
+          <div class="cat-item-icon">💪</div>
+          <h4>Gym / Fitness Studio</h4>
+          <p>Memberships, class schedule, trainer profiles</p>
+          <div class="cat-item-price">₹12,000 – ₹22,000</div>
+        </div>
+        <div class="cat-item">
+          <div class="cat-item-icon">✈️</div>
+          <h4>Travel Agency</h4>
+          <p>Tour packages, itinerary builder, booking enquiry</p>
+          <div class="cat-item-price">₹15,000 – ₹28,000</div>
+        </div>
+        <div class="cat-item">
+          <div class="cat-item-icon">💒</div>
+          <h4>Wedding / Event</h4>
+          <p>RSVP, gallery, countdown, vendor showcase</p>
+          <div class="cat-item-price">₹10,000 – ₹20,000</div>
+        </div>
+        <div class="cat-item">
+          <div class="cat-item-icon">⚖️</div>
+          <h4>Law Firm / Advocates</h4>
+          <p>Practice areas, team bio, consultation booking</p>
+          <div class="cat-item-price">₹12,000 – ₹22,000</div>
+        </div>
+        <div class="cat-item">
+          <div class="cat-item-icon">🌿</div>
+          <h4>NGO / Non-Profit</h4>
+          <p>Mission, donation integration, volunteer forms</p>
+          <div class="cat-item-price">₹10,000 – ₹20,000</div>
+        </div>
+        <div class="cat-item">
+          <div class="cat-item-icon">🏭</div>
+          <h4>Manufacturing / Industrial</h4>
+          <p>Product catalogue, certifications, distributor enquiry</p>
+          <div class="cat-item-price">₹15,000 – ₹28,000</div>
+        </div>
+        <div class="cat-item">
+          <div class="cat-item-icon">💻</div>
+          <h4>IT Company / Agency</h4>
+          <p>Services, portfolio, case studies, careers</p>
+          <div class="cat-item-price">₹14,000 – ₹26,000</div>
+        </div>
+        <div class="cat-item">
+          <div class="cat-item-icon">🎨</div>
+          <h4>Freelancer / Portfolio</h4>
+          <p>Work showcase, about, contact, resume download</p>
+          <div class="cat-item-price">₹8,000 – ₹16,000</div>
+        </div>
+        <div class="cat-item">
+          <div class="cat-item-icon">📦</div>
+          <h4>Logistics / Courier</h4>
+          <p>Tracking, rate calculator, service zones, booking</p>
+          <div class="cat-item-price">₹18,000 – ₹35,000</div>
+        </div>
+        <div class="cat-item">
+          <div class="cat-item-icon">🎓</div>
+          <h4>EdTech / Online Courses</h4>
+          <p>Course catalog, video hosting, payments, certificates</p>
+          <div class="cat-item-price">₹30,000 – ₹55,000</div>
+        </div>
+        <div class="cat-item">
+          <div class="cat-item-icon">💈</div>
+          <h4>Salon / Spa</h4>
+          <p>Services, appointment booking, gallery, offers</p>
+          <div class="cat-item-price">₹10,000 – ₹20,000</div>
+        </div>
+        <div class="cat-item">
+          <div class="cat-item-icon">🏗️</div>
+          <h4>Construction / Architect</h4>
+          <p>Project showcase, services, client enquiry, team</p>
+          <div class="cat-item-price">₹14,000 – ₹26,000</div>
+        </div>
+        <div class="cat-item">
+          <div class="cat-item-icon">🔬</div>
+          <h4>Pharma / Medical Supplies</h4>
+          <p>Product catalog, distributor portal, compliance info</p>
+          <div class="cat-item-price">₹20,000 – ₹38,000</div>
+        </div>
+        <div class="cat-item" style="background:var(--ink3)">
+          <div class="cat-item-icon">💬</div>
+          <h4>Not sure what you need?</h4>
+          <p>Tell us about your business and we'll recommend the right solution.</p>
+          <div class="cat-item-price" style="color:var(--muted)">Free consultation →</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PRICING TABLE ── -->
+  <section id="pricing">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-eyebrow">
+          <div class="sec-eyebrow-line"></div><span>Full Pricing</span>
+        </div>
+        <h2 class="sec-title">Every service, clearly priced</h2>
+        <p class="sec-desc">All prices in INR. Domain &amp; hosting extra (≈ ₹1,500 – ₹4,000/yr, setup free).</p>
+      </div>
+      <div class="pt-wrap">
+        <div class="pt-head">
+          <span>Service</span><span>Price Range</span><span style="text-align:center">Timeline</span><span
+            style="text-align:right">Type</span>
+        </div>
+        <div class="pt-row cat-sep"><span class="pt-cat-label">Web Development</span></div>
+        <div class="pt-row">
+          <div>
+            <div class="pt-name">Landing Page</div>
+            <div class="pt-desc">1-page · lead capture · SEO</div>
+          </div>
+          <div class="pt-price">₹8,000 – ₹15,000</div>
+          <div class="pt-time">7–12 days</div>
+          <div class="pt-type">One-time</div>
+        </div>
+        <div class="pt-row">
+          <div>
+            <div class="pt-name">Freelancer / Portfolio</div>
+            <div class="pt-desc">Showcase · contact · resume</div>
+          </div>
+          <div class="pt-price">₹8,000 – ₹16,000</div>
+          <div class="pt-time">7–12 days</div>
+          <div class="pt-type">One-time</div>
+        </div>
+        <div class="pt-row">
+          <div>
+            <div class="pt-name">Wedding / Event</div>
+            <div class="pt-desc">RSVP · gallery · countdown</div>
+          </div>
+          <div class="pt-price">₹10,000 – ₹20,000</div>
+          <div class="pt-time">7–14 days</div>
+          <div class="pt-type">One-time</div>
+        </div>
+        <div class="pt-row">
+          <div>
+            <div class="pt-name">NGO / Non-Profit</div>
+            <div class="pt-desc">Donations · projects · volunteer</div>
+          </div>
+          <div class="pt-price">₹10,000 – ₹20,000</div>
+          <div class="pt-time">10–16 days</div>
+          <div class="pt-type">One-time</div>
+        </div>
+        <div class="pt-row">
+          <div>
+            <div class="pt-name">Gym / Fitness Studio</div>
+            <div class="pt-desc">Memberships · schedule · enrolment</div>
+          </div>
+          <div class="pt-price">₹12,000 – ₹22,000</div>
+          <div class="pt-time">10–16 days</div>
+          <div class="pt-type">One-time</div>
+        </div>
+        <div class="pt-row">
+          <div>
+            <div class="pt-name">Law Firm / Advocates</div>
+            <div class="pt-desc">Practice areas · team · consultation</div>
+          </div>
+          <div class="pt-price">₹12,000 – ₹22,000</div>
+          <div class="pt-time">10–16 days</div>
+          <div class="pt-type">One-time</div>
+        </div>
+        <div class="pt-row">
+          <div>
+            <div class="pt-name">Business Portfolio</div>
+            <div class="pt-desc">Multi-page · blog · inquiry forms</div>
+          </div>
+          <div class="pt-price">₹12,000 – ₹22,000</div>
+          <div class="pt-time">10–18 days</div>
+          <div class="pt-type">One-time</div>
+        </div>
+        <div class="pt-row">
+          <div>
+            <div class="pt-name">Salon / Spa</div>
+            <div class="pt-desc">Services · appointments · gallery</div>
+          </div>
+          <div class="pt-price">₹10,000 – ₹20,000</div>
+          <div class="pt-time">7–14 days</div>
+          <div class="pt-type">One-time</div>
+        </div>
+        <div class="pt-row">
+          <div>
+            <div class="pt-name">IT Company / Agency</div>
+            <div class="pt-desc">Services · portfolio · careers</div>
+          </div>
+          <div class="pt-price">₹14,000 – ₹26,000</div>
+          <div class="pt-time">12–20 days</div>
+          <div class="pt-type">One-time</div>
+        </div>
+        <div class="pt-row">
+          <div>
+            <div class="pt-name">Travel Agency</div>
+            <div class="pt-desc">Packages · itinerary · enquiry</div>
+          </div>
+          <div class="pt-price">₹15,000 – ₹28,000</div>
+          <div class="pt-time">2–3 weeks</div>
+          <div class="pt-type">One-time</div>
+        </div>
+        <div class="pt-row">
+          <div>
+            <div class="pt-name">School / Coaching</div>
+            <div class="pt-desc">Admissions · fee portal · notice board</div>
+          </div>
+          <div class="pt-price">₹15,000 – ₹30,000</div>
+          <div class="pt-time">2–4 weeks</div>
+          <div class="pt-type">One-time</div>
+        </div>
+        <div class="pt-row">
+          <div>
+            <div class="pt-name">Manufacturing / Industrial</div>
+            <div class="pt-desc">Catalogue · certifications · enquiry</div>
+          </div>
+          <div class="pt-price">₹15,000 – ₹28,000</div>
+          <div class="pt-time">2–3 weeks</div>
+          <div class="pt-type">One-time</div>
+        </div>
+        <div class="pt-row">
+          <div>
+            <div class="pt-name">Construction / Architect</div>
+            <div class="pt-desc">Portfolio · projects · enquiry</div>
+          </div>
+          <div class="pt-price">₹14,000 – ₹26,000</div>
+          <div class="pt-time">2–3 weeks</div>
+          <div class="pt-type">One-time</div>
+        </div>
+        <div class="pt-row">
+          <div>
+            <div class="pt-name">Hospital / Clinic</div>
+            <div class="pt-desc">Appointments · doctors · departments</div>
+          </div>
+          <div class="pt-price">₹18,000 – ₹35,000</div>
+          <div class="pt-time">2–4 weeks</div>
+          <div class="pt-type">One-time</div>
+        </div>
+        <div class="pt-row">
+          <div>
+            <div class="pt-name">Logistics / Courier</div>
+            <div class="pt-desc">Tracking · rates · zones · booking</div>
+          </div>
+          <div class="pt-price">₹18,000 – ₹35,000</div>
+          <div class="pt-time">2–4 weeks</div>
+          <div class="pt-type">One-time</div>
+        </div>
+        <div class="pt-row">
+          <div>
+            <div class="pt-name">Pharma / Medical Supplies</div>
+            <div class="pt-desc">Catalogue · portal · compliance</div>
+          </div>
+          <div class="pt-price">₹20,000 – ₹38,000</div>
+          <div class="pt-time">2–4 weeks</div>
+          <div class="pt-type">One-time</div>
+        </div>
+        <div class="pt-row">
+          <div>
+            <div class="pt-name">Real Estate</div>
+            <div class="pt-desc">Listings · filters · tours · enquiry</div>
+          </div>
+          <div class="pt-price">₹20,000 – ₹40,000</div>
+          <div class="pt-time">3–5 weeks</div>
+          <div class="pt-type">One-time</div>
+        </div>
+        <div class="pt-row">
+          <div>
+            <div class="pt-name">Hotel / Resort</div>
+            <div class="pt-desc">Booking · rooms · gallery · reviews</div>
+          </div>
+          <div class="pt-price">₹22,000 – ₹40,000</div>
+          <div class="pt-time">3–5 weeks</div>
+          <div class="pt-type">One-time</div>
+        </div>
+        <div class="pt-row">
+          <div>
+            <div class="pt-name">Restaurant + Ordering System</div>
+            <div class="pt-desc">Menu · orders · UPI · admin panel</div>
+          </div>
+          <div class="pt-price" style="color:var(--white);font-size:14px;font-weight:700">₹25,000 – ₹45,000</div>
+          <div class="pt-time">3–5 weeks</div>
+          <div class="pt-type">One-time</div>
+        </div>
+        <div class="pt-row">
+          <div>
+            <div class="pt-name">E-Commerce Store</div>
+            <div class="pt-desc">Catalog · cart · payments · GST</div>
+          </div>
+          <div class="pt-price">₹28,000 – ₹55,000</div>
+          <div class="pt-time">4–6 weeks</div>
+          <div class="pt-type">One-time</div>
+        </div>
+        <div class="pt-row">
+          <div>
+            <div class="pt-name">EdTech / Online Courses</div>
+            <div class="pt-desc">Courses · video · payments · certs</div>
+          </div>
+          <div class="pt-price">₹30,000 – ₹55,000</div>
+          <div class="pt-time">4–7 weeks</div>
+          <div class="pt-type">One-time</div>
+        </div>
+        <div class="pt-row">
+          <div>
+            <div class="pt-name">Custom Web Application</div>
+            <div class="pt-desc">Portals · dashboards · complex systems</div>
+          </div>
+          <div class="pt-price">₹45,000+</div>
+          <div class="pt-time">6–12 weeks</div>
+          <div class="pt-type">One-time</div>
+        </div>
+        <div class="pt-row cat-sep"><span class="pt-cat-label">Software Development</span></div>
+        <div class="pt-row">
+          <div>
+            <div class="pt-name">Automation &amp; Scripting</div>
+            <div class="pt-desc">Bots · scrapers · data pipelines</div>
+          </div>
+          <div class="pt-price">₹8,000+</div>
+          <div class="pt-time">3–10 days</div>
+          <div class="pt-type">One-time</div>
+        </div>
+        <div class="pt-row">
+          <div>
+            <div class="pt-name">API Development &amp; Integration</div>
+            <div class="pt-desc">REST · GraphQL · 3rd party connectors</div>
+          </div>
+          <div class="pt-price">₹15,000+</div>
+          <div class="pt-time">1–4 weeks</div>
+          <div class="pt-type">One-time</div>
+        </div>
+        <div class="pt-row">
+          <div>
+            <div class="pt-name">AI-Powered Features</div>
+            <div class="pt-desc">Chatbots · recommendations · doc AI</div>
+          </div>
+          <div class="pt-price">₹25,000+</div>
+          <div class="pt-time">3–8 weeks</div>
+          <div class="pt-type">One-time</div>
+        </div>
+        <div class="pt-row">
+          <div>
+            <div class="pt-name">Desktop Application</div>
+            <div class="pt-desc">Windows · POS · billing · inventory</div>
+          </div>
+          <div class="pt-price">₹30,000+</div>
+          <div class="pt-time">6–10 weeks</div>
+          <div class="pt-type">One-time</div>
+        </div>
+        <div class="pt-row">
+          <div>
+            <div class="pt-name">Mobile App (Android / iOS)</div>
+            <div class="pt-desc">React Native · delivery · booking apps</div>
+          </div>
+          <div class="pt-price">₹40,000+</div>
+          <div class="pt-time">8–16 weeks</div>
+          <div class="pt-type">One-time</div>
+        </div>
+        <div class="pt-row">
+          <div>
+            <div class="pt-name">SaaS Product Development</div>
+            <div class="pt-desc">Multi-tenant · subscriptions · billing</div>
+          </div>
+          <div class="pt-price">₹70,000+</div>
+          <div class="pt-time">12–24 weeks</div>
+          <div class="pt-type">One-time</div>
+        </div>
+        <div class="pt-row">
+          <div>
+            <div class="pt-name">ERP / Business Management</div>
+            <div class="pt-desc">HR · payroll · inventory · accounts</div>
+          </div>
+          <div class="pt-price">₹80,000+</div>
+          <div class="pt-time">12–20 weeks</div>
+          <div class="pt-type">One-time</div>
+        </div>
+        <div class="pt-row cat-sep"><span class="pt-cat-label">Ongoing Services</span></div>
+        <div class="pt-row">
+          <div>
+            <div class="pt-name">SEO &amp; Maintenance Retainer</div>
+            <div class="pt-desc">Updates · speed · security · reports</div>
+          </div>
+          <div class="pt-price">₹2,500 / month</div>
+          <div class="pt-time">Ongoing</div>
+          <div class="pt-type">Monthly</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PACKAGES ── -->
+  <section>
+    <div class="wrap">
+      <div class="sec-head ctr">
+        <div class="sec-eyebrow" style="justify-content:center">
+          <div class="sec-eyebrow-line"></div><span>Packages</span>
+        </div>
+        <h2 class="sec-title">Pick your starting point</h2>
+        <p class="sec-desc">Three bundles for common needs — or get a fully custom quote.</p>
+      </div>
+      <div class="pkg-grid">
+        <div class="pkg">
+          <div class="pkg-tier">Starter</div>
+          <h3>Basic</h3>
+          <div class="pkg-desc">For individuals and small businesses just getting online.</div>
+          <div class="pkg-price">₹8,000</div>
+          <div class="pkg-price-note">onwards</div>
+          <ul class="pkg-list">
+            <li><span class="pl-y">✓</span>Landing page or portfolio</li>
+            <li><span class="pl-y">✓</span>Mobile responsive design</li>
+            <li><span class="pl-y">✓</span>Contact form setup</li>
+            <li><span class="pl-y">✓</span>Basic SEO setup</li>
+            <li><span class="pl-y">✓</span>1 round of revisions</li>
+            <li><span class="pl-n">–</span>Payment integration</li>
+            <li><span class="pl-n">–</span>Admin panel</li>
+          </ul>
+          <a href="#cta" class="pkg-cta">Get started →</a>
+        </div>
+        <div class="pkg best">
+          <div class="pkg-tier">Most Chosen</div>
+          <h3>Business</h3>
+          <div class="pkg-desc">For restaurants, clinics, and established service businesses.</div>
+          <div class="pkg-price">₹18,000</div>
+          <div class="pkg-price-note">onwards</div>
+          <ul class="pkg-list">
+            <li><span class="pl-y">✓</span>Multi-page custom website</li>
+            <li><span class="pl-y">✓</span>Mobile-first &amp; fast load</li>
+            <li><span class="pl-y">✓</span>Booking / inquiry system</li>
+            <li><span class="pl-y">✓</span>Google Analytics + SEO</li>
+            <li><span class="pl-y">✓</span>2 rounds of revisions</li>
+            <li><span class="pl-y">✓</span>UPI / Razorpay (if needed)</li>
+            <li><span class="pl-y">✓</span>Basic admin panel</li>
+          </ul>
+          <a href="#cta" class="pkg-cta">Get started →</a>
+        </div>
+        <div class="pkg">
+          <div class="pkg-tier">Full Build</div>
+          <h3>Pro</h3>
+          <div class="pkg-desc">For e-commerce, software systems, and complex applications.</div>
+          <div class="pkg-price">₹28,000</div>
+          <div class="pkg-price-note">onwards</div>
+          <ul class="pkg-list">
+            <li><span class="pl-y">✓</span>Full-stack application</li>
+            <li><span class="pl-y">✓</span>Complete payment system</li>
+            <li><span class="pl-y">✓</span>Full admin dashboard</li>
+            <li><span class="pl-y">✓</span>WhatsApp / SMS integration</li>
+            <li><span class="pl-y">✓</span>Unlimited revisions</li>
+            <li><span class="pl-y">✓</span>Cloud deployment</li>
+            <li><span class="pl-y">✓</span>1 month free support</li>
+          </ul>
+          <a href="#cta" class="pkg-cta">Get started →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROCESS ── -->
+  <section id="process">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-eyebrow">
+          <div class="sec-eyebrow-line"></div><span>How It Works</span>
+        </div>
+        <h2 class="sec-title">From idea to live product</h2>
+      </div>
+      <div class="process-grid">
+        <div class="pstep">
+          <div class="ps-num">01</div>
+          <h4>Discovery Call</h4>
+          <p>Free 30-minute call. We understand your business, goals, and budget — and tell you exactly what's possible.
+          </p>
+        </div>
+        <div class="pstep">
+          <div class="ps-num">02</div>
+          <h4>Proposal</h4>
+          <p>A clear scope document with price, timeline, and every deliverable listed. No hidden costs, ever.</p>
+        </div>
+        <div class="pstep">
+          <div class="ps-num">03</div>
+          <h4>Design &amp; Build</h4>
+          <p>We design and build — you get preview links throughout and can give feedback at every stage.</p>
+        </div>
+        <div class="pstep">
+          <div class="ps-num">04</div>
+          <h4>Launch &amp; Handover</h4>
+          <p>We deploy your project and hand over full code ownership, credentials, and a walkthrough video.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TECH ── -->
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-eyebrow">
+          <div class="sec-eyebrow-line"></div><span>Tech Stack</span>
+        </div>
+        <h2 class="sec-title">What we build with</h2>
+        <p class="sec-desc">Modern, battle-tested technologies chosen for performance, reliability, and long-term
+          maintainability.</p>
+      </div>
+      <div class="tech-grid">
+        <div class="tc-group">
+          <div class="tc-group-label">Frontend</div>
+          <div class="tc-chips">
+            <span class="tc-chip">React.js</span>
+            <span class="tc-chip">Next.js</span>
+            <span class="tc-chip">TypeScript</span>
+            <span class="tc-chip">Tailwind CSS</span>
+            <span class="tc-chip">HTML / CSS</span>
+          </div>
+        </div>
+        <div class="tc-group">
+          <div class="tc-group-label">Backend</div>
+          <div class="tc-chips">
+            <span class="tc-chip">Node.js</span>
+            <span class="tc-chip">Express.js</span>
+            <span class="tc-chip">Python</span>
+            <span class="tc-chip">Django</span>
+            <span class="tc-chip">REST API</span>
+          </div>
+        </div>
+        <div class="tc-group">
+          <div class="tc-group-label">Database</div>
+          <div class="tc-chips">
+            <span class="tc-chip">MongoDB</span>
+            <span class="tc-chip">PostgreSQL</span>
+            <span class="tc-chip">MySQL</span>
+            <span class="tc-chip">Firebase</span>
+          </div>
+        </div>
+        <div class="tc-group">
+          <div class="tc-group-label">Payments &amp; Comms</div>
+          <div class="tc-chips">
+            <span class="tc-chip">Razorpay</span>
+            <span class="tc-chip">UPI</span>
+            <span class="tc-chip">Stripe</span>
+            <span class="tc-chip">WhatsApp API</span>
+            <span class="tc-chip">Twilio SMS</span>
+          </div>
+        </div>
+        <div class="tc-group">
+          <div class="tc-group-label">Mobile &amp; Desktop</div>
+          <div class="tc-chips">
+            <span class="tc-chip">React Native</span>
+            <span class="tc-chip">Electron.js</span>
+            <span class="tc-chip">Expo</span>
+          </div>
+        </div>
+        <div class="tc-group">
+          <div class="tc-group-label">Cloud &amp; DevOps</div>
+          <div class="tc-chips">
+            <span class="tc-chip">AWS</span>
+            <span class="tc-chip">GCP</span>
+            <span class="tc-chip">Vercel</span>
+            <span class="tc-chip">Cloudinary</span>
+            <span class="tc-chip">Docker</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHY US ── -->
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-eyebrow">
+          <div class="sec-eyebrow-line"></div><span>Why H&amp;A Studio</span>
+        </div>
+        <h2 class="sec-title">The difference</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-item">
+          <div class="why-icon">🎯</div>
+          <h4>Business-first thinking</h4>
+          <p>We understand what you're selling and build to drive results — not just pretty pages that sit idle.</p>
+        </div>
+        <div class="why-item">
+          <div class="why-icon">⚡</div>
+          <h4>Fast &amp; reliable delivery</h4>
+          <p>Clear timelines, daily progress updates. No ghosting, no delays, no excuses.</p>
+        </div>
+        <div class="why-item">
+          <div class="why-icon">📱</div>
+          <h4>Mobile-first, always</h4>
+          <p>70%+ of Indian users are on mobile. Every build is pixel-perfect across all screen sizes.</p>
+        </div>
+        <div class="why-item">
+          <div class="why-icon">🔑</div>
+          <h4>Full ownership guaranteed</h4>
+          <p>You own every line of code, every credential, and every file. No lock-in. No recurring platform fees.</p>
+        </div>
+        <div class="why-item">
+          <div class="why-icon">💬</div>
+          <h4>Direct communication</h4>
+          <p>No account managers or middlemen — you talk directly with the developer building your product.</p>
+        </div>
+        <div class="why-item">
+          <div class="why-icon">🏷️</div>
+          <h4>Transparent pricing</h4>
+          <p>What we quote is what you pay. Revisions are part of the process, not billable extras.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TEAM ── -->
+  <section id="team">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-eyebrow">
+          <div class="sec-eyebrow-line"></div><span>The Team</span>
+        </div>
+        <h2 class="sec-title">Who you'll be working with</h2>
+        <p class="sec-desc">Two developers. One studio. Every project gets our full attention.</p>
+      </div>
+      <div class="team-grid">
+
+        <div class="team-card">
+          <div class="team-avatar">HP</div>
+          <div class="team-info">
+            <div class="team-name">Harikrishna Panchal</div>
+            <div class="team-role">Co-Founder · Full-Stack Developer</div>
+            <div class="team-contacts">
+              <div class="tc-line">
+                <span class="tc-icon">📞</span>
+                <a href="tel:+919561269819" class="tc-val">+91 95612 69819</a>
+              </div>
+              <div class="tc-line">
+                <span class="tc-icon">✉️</span>
+                <a href="mailto:nmharikrishna1228@gmail.com" class="tc-val">nmharikrishna1228@gmail.com</a>
+              </div>
+              <div class="tc-line">
+                <span class="tc-icon">💬</span>
+                <a href="https://wa.me/919561269819" class="tc-val">WhatsApp →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">AW</div>
+          <div class="team-info">
+            <div class="team-name">Aditya Wagh</div>
+            <div class="team-role">Co-Founder · Web Developer</div>
+            <div class="team-contacts">
+              <div class="tc-line">
+                <span class="tc-icon">📞</span>
+                <a href="tel:+917798405033" class="tc-val">+91 77984 05033</a>
+              </div>
+              <div class="tc-line">
+                <span class="tc-icon">✉️</span>
+                <a href="mailto:adityawagh7535@gmail.com" class="tc-val">adityawagh7535@gmail.com</a>
+              </div>
+              <div class="tc-line">
+                <span class="tc-icon">💬</span>
+                <a href="https://wa.me/917798405033" class="tc-val">WhatsApp →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <div class="cta-section" id="cta">
+    <div class="wrap" style="max-width:1060px;margin:0 auto">
+      <h2>Ready to build<br /><em>something great?</em></h2>
+      <p>Free consultation · Quote within 24 hours · No commitment required</p>
+      <div class="cta-btns">
+        <a href="mailto:nmharikrishna1228@gmail.com" class="cta-dark">📩 Email Harikrishna</a>
+        <a href="mailto:adityawagh7535@gmail.com" class="cta-dark">📩 Email Aditya</a>
+        <a href="https://wa.me/919561269819" class="cta-outline">💬 WhatsApp Us</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="wrap">
+      <div class="footer-in">
+        <div class="footer-logo">H&amp;A Studio</div>
+        <div class="footer-copy">© 2025 H&amp;A Studio · Dhule / Nashik, Maharashtra · All rights reserved</div>
+        <div class="footer-links">
+          <a href="#services">Web</a>
+          <a href="#software">Software</a>
+          <a href="#catalog">Catalog</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#team">Team</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
